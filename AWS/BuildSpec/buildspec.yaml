@@ -13,7 +13,6 @@ phases:
       - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
     commands:
-      - mvn clean install 
       - echo Build started on `date`
       - echo Building the Docker image...          
       - docker build -t $REPOSITORY_URI:latest .
@@ -27,3 +26,4 @@ phases:
       - echo Writing image definitions file...
       - printf '[{"name”:"__ECS_CONTAINER_NAME__","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
+  files: imagedefinitions.json
