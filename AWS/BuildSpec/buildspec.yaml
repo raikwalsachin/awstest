@@ -15,7 +15,7 @@ phases:
   build:
     commands:
   # Creating a java package,the jar file will be added to the dockerfile and then executed    
-	- mvn clean package
+      - mvn clean package
       - echo Build started on `date`
       - echo Building the Docker image...          
       - docker build -t $REPOSITORY_URI:latest .
